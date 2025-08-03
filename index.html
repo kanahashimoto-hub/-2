@@ -8,16 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Warm Neutral Summer Festival -->
     <!-- Application Structure Plan: A single-page application with a sticky navigation bar for easy access to key sections (Overview, Contents, Schedule, Access, Floor Map). The core interaction is a filter system (Day/Night buttons) that dynamically updates both the Contents and Schedule sections via JavaScript. This user-centric design allows attendees to view only the information relevant to their session, reducing complexity and improving usability on mobile devices during the event. -->
-    <!-- Visualization & Content Choices: Event details are presented in interactive cards instead of a static table, filterable by session (Day/Night). This card-based layout is more mobile-friendly and visually engaging. The schedule is a custom vertical timeline built with HTML/CSS, which is more dynamic than a simple list. A simplified floor map is created using CSS Grid/Flexbox to avoid external images and keep the application self-contained and fast. -->
+    <!-- Visualization & Content Choices: Event details are presented in interactive cards instead of a static table, filterable by session (Day/Night). This card-based layout is more mobile-friendly and visually engaging. the schedule is a custom vertical timeline built with HTML/CSS, which is more dynamic than a simple list. A simplified floor map is created using CSS Grid/Flexbox to avoid external images and keep the application self-contained and fast. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'M PLUS Rounded 1c', sans-serif;
             background-color: #FFFBF5;
             color: #4A4A4A;
-        }
-        .hero-bg {
-            background: linear-gradient(135deg, #FFD3A5 0%, #FD6585 100%);
         }
         .nav-link {
             transition: all 0.3s;
@@ -95,13 +92,11 @@
     </header>
 
     <main>
-        <section class="hero-bg text-white py-20 md:py-32">
+        <section class="py-20 md:py-32">
             <div class="container mx-auto px-6 text-center">
-                <div class="flex flex-col items-center justify-center mb-4">
-                    <img src="Family&FriendsDay_logo_透過.png" alt="DeNA Family & Friends Day Logo" class="w-64 md:w-96 mb-4">
+                <div class="flex flex-col items-center justify-center">
+                    <img src="Family&FriendsDay_logo_透過.png" alt="DeNA Family & Friends Day Logo" class="w-64 md:w-96">
                 </div>
-                <h1 class="text-2xl md:text-3xl font-extrabold leading-tight mb-2 hidden">DeNA Family & Friends Day</h1>
-                <p class="text-lg md:text-xl font-bold hidden">みんなで楽しむ1日だけの夏祭り</p>
             </div>
         </section>
 

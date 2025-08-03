@@ -7,8 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Warm Neutral Summer Festival -->
-    <!-- Application Structure Plan: A single-page design with a sticky nav bar and distinct, filterable sections for Contents and Schedule. This structure allows users to easily find information relevant to the specific session (Day/Night) they are attending, reducing cognitive load. A CSS-based floor map is included for spatial clarity. -->
-    <!-- Visualization & Content Choices: Event details are presented in interactive cards instead of a static table, filterable by session (Day/Night) via JS. The schedule is a visual timeline created with HTML/CSS. A floor map is built with CSS Grid/Flexbox. These choices prioritize interactive exploration and clarity over static data presentation. No charts are needed. -->
+    <!-- Application Structure Plan: A single-page application with a sticky navigation bar for easy access to key sections (Overview, Contents, Schedule, Access, Floor Map). The core interaction is a filter system (Day/Night buttons) that dynamically updates both the Contents and Schedule sections via JavaScript. This user-centric design allows attendees to view only the information relevant to their session, reducing complexity and improving usability on mobile devices during the event. -->
+    <!-- Visualization & Content Choices: Event details are presented in interactive cards instead of a static table, filterable by session (Day/Night). This card-based layout is more mobile-friendly and visually engaging. The schedule is a custom vertical timeline built with HTML/CSS, which is more dynamic than a simple list. A simplified floor map is created using CSS Grid/Flexbox to avoid external images and keep the application self-contained and fast. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -70,6 +70,9 @@
             background-color: #FD6585;
             border: 4px solid #FFFBF5;
         }
+        .schedule-section.hidden {
+            display: none;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -77,7 +80,7 @@
     <header class="sticky top-0 bg-white/80 backdrop-blur-sm z-50 shadow-md">
         <nav class="container mx-auto px-6 py-3">
             <div class="flex justify-between items-center">
-                <div class="text-xl font-bold text-gray-800">DeNA Family & Friends Day</div>
+                <div class="text-xl font-bold text-gray-800"></div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#overview" class="nav-link font-semibold">概要</a>
                     <a href="#contents" class="nav-link font-semibold">コンテンツ</a>
@@ -146,23 +149,23 @@
         <section id="schedule" class="py-16 md:py-24">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-12">タイムスケジュール</h2>
-                 <div class="max-w-3xl mx-auto">
-                    <div id="schedule-day">
+                 <div class="max-w-4xl mx-auto">
+                    <div id="schedule-day" class="schedule-section">
                         <h3 class="text-2xl font-bold text-center mb-8 text-orange-500">☀️ 昼の部</h3>
                         <div class="grid md:grid-cols-2 gap-12">
                             <div>
-                                <h4 class="text-xl font-bold mb-4">1部 (10:00 - 12:00)</h4>
+                                <h4 class="text-xl font-bold mb-4 text-center md:text-left">1部 (10:00 - 12:00)</h4>
                                 <div id="schedule-day-content-1"></div>
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold mb-4">2部 (13:00 - 15:00)</h4>
+                                <h4 class="text-xl font-bold mb-4 text-center md:text-left">2部 (13:00 - 15:00)</h4>
                                 <div id="schedule-day-content-2"></div>
                             </div>
                         </div>
                     </div>
-                    <div id="schedule-night" class="hidden">
+                    <div id="schedule-night" class="schedule-section hidden">
                         <h3 class="text-2xl font-bold text-center mb-8 text-indigo-500">🌙 夜の部</h3>
-                        <div id="schedule-night-content"></div>
+                        <div class="max-w-md mx-auto" id="schedule-night-content"></div>
                     </div>
                 </div>
             </div>
@@ -176,8 +179,8 @@
                         <h3 class="text-xl font-bold mb-4 flex items-center">
                             <span class="text-2xl mr-3">🗺️</span> オフィスへのアクセス
                         </h3>
-                        <p class="text-lg">**住所:** 東京都渋谷区渋谷二丁目24番12号 渋谷スクランブルスクエア</p>
-                        <p class="text-lg mt-2">詳細はこちらをご確認ください: <a href="https://dena.com/jp/company/access.html" class="text-blue-600 hover:underline" target="_blank">https://dena.com/jp/company/access.html</a></p>
+                        <p class="text-lg">住所: 東京都渋谷区渋谷二丁目24番12号 渋谷スクランブルスクエア</p>
+                        <p class="text-lg mt-2">https://dena.com/jp/company/access.html</p>
                     </div>
                     <div>
                         <h3 class="text-xl font-bold mb-4 flex items-center">
@@ -185,7 +188,7 @@
                         </h3>
                         <ol class="list-decimal list-inside space-y-4 text-lg">
                             <li>スクランブルスクエア地下2階 or 2階にあるオフィス専用エレベーターにて、17階オフィスエントランスまでお越しください。</li>
-                            <li>参加者代表にお送りしたメールを17F特別受付にてお出しください。
+                            <li>参加者代表にお送りしたメールを17F特別受付にてお出しください。</li>
                         </ol>
                     </div>
                 </div>
@@ -244,12 +247,11 @@
                 { name: '芝生ひとやすみスペース', location: '40F', desc: 'ソファがある一角に、お子様が一休みできる芝生コーナーをご用意しました。', reserved: false },
                 { name: 'タレントベース プロフィール写真撮影会', location: '40F', desc: 'DeNA Family & Friends Day限定！プロが最高の1枚を撮影。SNSにもどうぞ！', reserved: true },
                 { name: 'ドリンクコーナー', location: '40F', desc: '冷蔵庫にご自由に飲んでいただけるドリンクをご用意。ジュースや牛乳、豆乳があります。ホットコーヒーやお水、お茶もぜひどうぞ！', reserved: true },
-                { name: 'パズルでプログラミング体験', location: '40F', desc: 'パズルを解きながら、楽しくプログラミングに触れてみよう!
-「プログラミングゼミ」アプリを使い楽しみながらプログラミングを学べます。', reserved: false },
+                { name: 'パズルでプログラミング体験', location: '40F', desc: 'パズルを解きながら、楽しくプログラミングに触れてみよう!「プログラミングゼミ」アプリを使い楽しみながらプログラミングを学べます。', reserved: false },
                 { name: 'ケンコー縁日', location: '42F', desc: '握力計、型抜き、けん玉、輪投げに挑戦！ 2つ以上遊んだらお菓子つかみ取りもできちゃう！', reserved: false },
                 { name: 'バルーンアート', location: '42F', desc: 'DeNA マジック部からバルーンアート職人が登場！一緒に自分だけのバルーンを作ろう', reserved: false },
                 { name: 'ひとやすみラウンジ', location: '42F', desc: 'ちょっとしたお休みどころをご用意！コーヒーマシンもあるため、一休みしたい時に利用ください', reserved: false },
-                { name: 'ワークショップ：自分だけのふりかけ作り', location: '42F', desc: '好きな具材を選んでシャカシャカ！　ふりかけ作り×家庭料理のテイクアウトサービス『マチルダ』の、家族でおいしく楽しい食体験を！', reserved: true },
+                { name: 'ワークショップ：自分だけのふりかけ作り', location: '42F', desc: '好きな具材を選んでシャカシャカ！　ふりかけ作り×家庭料理のテイクアウトサービス『マチルダ』の、家族でおいしく楽しい食体験を！<br><br>※対象年齢3歳以上。安全上の観点から、体験は保護者の方同伴でご参加ください。', reserved: true },
             ],
             night: [
                 { name: '野球観戦', location: '40F', desc: '大画面でベイスターズの試合を応援！みんなで集まって盛り上がりましょう！', reserved: false },
@@ -334,21 +336,24 @@
             scheduleNightContent.innerHTML = schedules.night.map(createTimelineItem).join('');
         }
         
-        btnDay.addEventListener('click', () => {
-            renderContents('day');
-            btnDay.classList.add('active');
-            btnNight.classList.remove('active');
-            scheduleDay.classList.remove('hidden');
-            scheduleNight.classList.add('hidden');
-        });
+        function switchView(view) {
+            if (view === 'day') {
+                renderContents('day');
+                btnDay.classList.add('active');
+                btnNight.classList.remove('active');
+                document.getElementById('schedule-day').classList.remove('hidden');
+                document.getElementById('schedule-night').classList.add('hidden');
+            } else {
+                renderContents('night');
+                btnNight.classList.add('active');
+                btnDay.classList.remove('active');
+                document.getElementById('schedule-night').classList.remove('hidden');
+                document.getElementById('schedule-day').classList.add('hidden');
+            }
+        }
 
-        btnNight.addEventListener('click', () => {
-            renderContents('night');
-            btnNight.classList.add('active');
-            btnDay.classList.remove('active');
-            scheduleNight.classList.remove('hidden');
-            scheduleDay.classList.add('hidden');
-        });
+        btnDay.addEventListener('click', () => switchView('day'));
+        btnNight.addEventListener('click', () => switchView('night'));
         
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -359,7 +364,7 @@
             });
         });
 
-        renderContents('day');
+        switchView('day');
         renderSchedules();
     </script>
 </body>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeNA Family & Friends Day 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral Summer Festival -->
+    <!-- Application Structure Plan: A single-page design with a sticky nav bar and distinct, filterable sections for Contents and Schedule. This structure allows users to easily find information relevant to the specific session (Day/Night) they are attending, reducing cognitive load. A CSS-based floor map is included for spatial clarity. -->
+    <!-- Visualization & Content Choices: Event details are presented in interactive cards instead of a static table, filterable by session (Day/Night) via JS. The schedule is a visual timeline created with HTML/CSS. A floor map is built with CSS Grid/Flexbox. These choices prioritize interactive exploration and clarity over static data presentation. No charts are needed. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            background-color: #FFFBF5;
+            color: #4A4A4A;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #FFD3A5 0%, #FD6585 100%);
+        }
+        .nav-link {
+            transition: all 0.3s;
+        }
+        .nav-link:hover {
+            color: #FD6585;
+            transform: translateY(-2px);
+        }
+        .btn-filter {
+            transition: all 0.3s;
+        }
+        .btn-filter.active {
+            background-color: #FD6585;
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(253, 101, 133, 0.39);
+        }
+        .content-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            will-change: transform;
+        }
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 2.5rem;
+        }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0.5rem;
+            width: 2px;
+            height: 100%;
+            background-color: #FFD3A5;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background-color: #FD6585;
+            border: 4px solid #FFFBF5;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="sticky top-0 bg-white/80 backdrop-blur-sm z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold text-gray-800">DeNA F&F Day</div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#overview" class="nav-link font-semibold">概要</a>
+                    <a href="#contents" class="nav-link font-semibold">コンテンツ</a>
+                    <a href="#schedule" class="nav-link font-semibold">スケジュール</a>
+                    <a href="#access" class="nav-link font-semibold">アクセス</a>
+                    <a href="#floormap" class="nav-link font-semibold">フロアマップ</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-bg text-white py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">DeNA Family & Friends Day</h1>
+                <p class="text-xl md:text-2xl font-bold">みんなで楽しむ1日だけの夏祭り</p>
+            </div>
+        </section>
+
+        <section id="overview" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">開催概要</h2>
+                <div class="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 flex items-center">
+                                <span class="text-2xl mr-3">🗓️</span> 日時
+                            </h3>
+                            <p class="text-lg">2025年8月21日（木）</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>昼の部 1部: 10:00 - 12:00</li>
+                                <li>昼の部 2部: 13:00 - 15:00</li>
+                                <li>夜の部: 17:00 - 20:45</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 flex items-center">
+                                <span class="text-2xl mr-3">📍</span> 会場
+                            </h3>
+                            <p class="text-lg">渋谷スクランブルスクエア</p>
+                             <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>40F (ラウンジ、セミナールーム等)</li>
+                                <li>42F (ラウンジ等)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contents" class="py-16 md:py-24 bg-orange-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-6">コンテンツ一覧</h2>
+                <p class="text-center max-w-2xl mx-auto mb-12">
+                    昼の部と夜の部で様々な楽しいコンテンツをご用意しました。下のボタンで表示を切り替えて、気になるコンテンツをチェックしてみてください。
+                </p>
+                <div class="flex justify-center space-x-4 mb-12">
+                    <button id="btn-day" class="btn-filter active font-bold py-2 px-6 rounded-full bg-white shadow">昼の部</button>
+                    <button id="btn-night" class="btn-filter font-bold py-2 px-6 rounded-full bg-white shadow">夜の部</button>
+                </div>
+                <div id="contents-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                </div>
+            </div>
+        </section>
+
+        <section id="schedule" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">タイムスケジュール</h2>
+                 <div class="max-w-3xl mx-auto">
+                    <div id="schedule-day">
+                        <h3 class="text-2xl font-bold text-center mb-8 text-orange-500">☀️ 昼の部</h3>
+                        <div class="grid md:grid-cols-2 gap-12">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4">1部 (10:00 - 12:00)</h4>
+                                <div id="schedule-day-content-1"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-4">2部 (13:00 - 15:00)</h4>
+                                <div id="schedule-day-content-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="schedule-night" class="hidden">
+                        <h3 class="text-2xl font-bold text-center mb-8 text-indigo-500">🌙 夜の部</h3>
+                        <div id="schedule-night-content"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="access" class="py-16 md:py-24 bg-orange-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">アクセス・入館方法</h2>
+                <div class="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto space-y-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="text-2xl mr-3">🗺️</span> オフィスへのアクセス
+                        </h3>
+                        <p class="text-lg">**住所:** 東京都渋谷区渋谷二丁目24番12号 渋谷スクランブルスクエア</p>
+                        <p class="text-lg mt-2">詳細はこちらをご確認ください: <a href="https://dena.com/jp/company/access.html" class="text-blue-600 hover:underline" target="_blank">https://dena.com/jp/company/access.html</a></p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="text-2xl mr-3">🚪</span> 入館方法
+                        </h3>
+                        <ol class="list-decimal list-inside space-y-4 text-lg">
+                            <li>スクランブルスクエア地下2階 or 2階にあるオフィス専用エレベーターにて、17階オフィスエントランスまでお越しください。</li>
+                            <li>参加者代表にお送りしたメールを17F特別受付にてお出しください。入館カードを受け取り、右手のエレベーター群から、39階までお越しください。</li>
+                            <li>weworkラウンジ受付（エントランスより右手）までお越しください。</li>
+                            <li>メール同封のQRコードをご提示いただき、受付をお願いします。</li>
+                            <li>担当者がお迎えに参りますので、受付付近でお待ちください。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="floormap" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">フロアマップ</h2>
+                <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6 text-center">40F</h3>
+                        <div class="space-y-4">
+                            <div class="bg-blue-100 p-4 rounded-lg text-center font-semibold">ラウンジ & ステージ</div>
+                            <div class="grid grid-cols-2 gap-4">
+                               <div class="bg-green-100 p-4 rounded-lg text-center font-semibold">じゃんけん大会</div>
+                               <div class="bg-green-100 p-4 rounded-lg text-center font-semibold">抽選会</div>
+                               <div class="bg-green-100 p-4 rounded-lg text-center font-semibold">プログラミング体験</div>
+                               <div class="bg-green-100 p-4 rounded-lg text-center font-semibold">野球観戦</div>
+                            </div>
+                            <div class="bg-yellow-100 p-4 rounded-lg text-center font-semibold">セミナールーム</div>
+                            <div class="grid grid-cols-1 gap-4">
+                                <div class="bg-red-100 p-4 rounded-lg text-center font-semibold">プロフィール写真撮影会</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6 text-center">42F</h3>
+                         <div class="space-y-4">
+                            <div class="bg-blue-100 p-4 rounded-lg text-center font-semibold">ラウンジ</div>
+                            <div class="grid grid-cols-2 gap-4">
+                               <div class="bg-purple-100 p-4 rounded-lg text-center font-semibold">ケンコー縁日</div>
+                               <div class="bg-purple-100 p-4 rounded-lg text-center font-semibold">バルーンアート</div>
+                               <div class="bg-purple-100 p-4 rounded-lg text-center font-semibold">ふりかけ作り</div>
+                               <div class="bg-purple-100 p-4 rounded-lg text-center font-semibold">ボードゲーム</div>
+                               <div class="bg-orange-200 p-4 rounded-lg text-center font-semibold col-span-2">TOKYO MIX CURRY</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 DeNA Co., Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const contents = {
+            day: [
+                { name: 'DeNAスポーツクラブのマスコットとのじゃんけん大会', location: '40F（ステージ）', desc: 'マスコットとのじゃんけん大会です！勝てるかな？', reserved: false },
+                { name: 'ロウルのガラガラ抽選会', location: '40F', desc: '空くじなし！豪華景品が当たるチャンス！何が当たるかはお楽しみ！', reserved: false },
+                { name: 'タレントベース プロフィール写真撮影会', location: '40F', desc: 'プロのカメラマンが撮影！ご家族の記念写真も撮影可能です。', reserved: true },
+                { name: 'パズルでプログラミング体験', location: '40F', desc: '小さなお子様から楽しめるプログラミング体験。思考力を育もう！', reserved: false },
+                { name: 'ケンコー縁日', location: '42F', desc: '射的や輪投げなど、昔ながらの楽しい縁日をお楽しみください。', reserved: false },
+                { name: 'バルーンアート', location: '42F', desc: 'リクエストに応じて、好きなキャラクターのバルーンアートを作ってもらえます。', reserved: false },
+                { name: 'ワークショップ：自分だけのふりかけ作り', location: '42F', desc: 'supported by マチルダ。世界に一つだけのオリジナルふりかけを作ろう！', reserved: true },
+            ],
+            night: [
+                { name: '野球観戦', location: '40F', desc: '大画面でベイスターズの試合を応援！みんなで集まって盛り上がりましょう！', reserved: false },
+                { name: 'TOKYO MIX CURRY', location: '42F', desc: 'DeNA本社の人気メニュー！美味しいカレーを先着順でご提供します。', reserved: false, note: '先着順' },
+                { name: 'タレントベース プロフィール写真撮影会', location: '40F', desc: 'ご友人との記念写真や、本格的な宣材写真も撮影可能です。', reserved: false },
+                { name: 'ケンコー縁日', location: '42F', desc: '夜も縁日で盛り上がろう！昼の部とは景品が違うかも？', reserved: false },
+                { name: 'ボードゲーム', location: '42F', desc: 'たくさんの種類のボードゲームをご用意。好きなゲームで盛り上がりましょう。', reserved: false },
+            ]
+        };
+
+        const schedules = {
+            day1: [
+                { time: '9:50', event: '受付開始', location: '17F' },
+                { time: '11:20 - 11:50', event: 'マスコットステージ', location: '40F' },
+                { time: '終日', event: '「タレントベース プロフィール写真撮影会」「自分だけのふりかけ作り」は事前予約制です。', location: '' },
+            ],
+            day2: [
+                { time: '12:50', event: '受付開始', location: '17F' },
+                { time: '13:20 - 13:50', event: 'マスコットステージ', location: '40F' },
+                { time: '終日', event: '「タレントベース プロフィール写真撮影会」「自分だけのふりかけ作り」は事前予約制です。', location: '' },
+            ],
+            night: [
+                { time: '16:50', event: '受付開始', location: '17F' },
+                { time: '17:00 - 19:00', event: '「ボードゲーム」「ケンコー縁日」', location: '42F' },
+                { time: '17:00 - 19:30', event: 'タレントベース プロフィール写真撮影会', location: '40F' },
+                { time: '18:00-', event: '野球観戦', location: '40F' },
+                { time: '18:00-', event: 'TOKYO MIX CURRYのカレー提供 (先着順)', location: '42F' },
+            ]
+        };
+
+        const contentsGrid = document.getElementById('contents-grid');
+        const scheduleDayContent1 = document.getElementById('schedule-day-content-1');
+        const scheduleDayContent2 = document.getElementById('schedule-day-content-2');
+        const scheduleNightContent = document.getElementById('schedule-night-content');
+        
+        const btnDay = document.getElementById('btn-day');
+        const btnNight = document.getElementById('btn-night');
+        const scheduleDay = document.getElementById('schedule-day');
+        const scheduleNight = document.getElementById('schedule-night');
+
+        function createContentCard(item) {
+            const reservedTag = item.reserved 
+                ? `<div class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">要予約</div>`
+                : `<div class="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">予約不要</div>`;
+            
+            const noteTag = item.note ? `<p class="text-sm text-orange-600 mt-2 font-semibold">${item.note}</p>` : '';
+
+            return `
+                <div class="content-card bg-white rounded-xl shadow-lg overflow-hidden relative">
+                    ${reservedTag}
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">${item.name}</h3>
+                        <p class="text-gray-600 text-sm mb-4">${item.desc}</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="mr-2">📍</span>
+                            <span>${item.location}</span>
+                        </div>
+                        ${noteTag}
+                    </div>
+                </div>
+            `;
+        }
+
+        function createTimelineItem(item) {
+            return `
+                <div class="timeline-item">
+                    <p class="font-bold text-lg">${item.time}</p>
+                    <p class="text-gray-700">${item.event}</p>
+                    ${item.location ? `<p class="text-sm text-gray-500 mt-1">@ ${item.location}</p>` : ''}
+                </div>
+            `;
+        }
+
+        function renderContents(type) {
+            contentsGrid.innerHTML = contents[type].map(createContentCard).join('');
+        }
+
+        function renderSchedules() {
+            scheduleDayContent1.innerHTML = schedules.day1.map(createTimelineItem).join('');
+            scheduleDayContent2.innerHTML = schedules.day2.map(createTimelineItem).join('');
+            scheduleNightContent.innerHTML = schedules.night.map(createTimelineItem).join('');
+        }
+        
+        btnDay.addEventListener('click', () => {
+            renderContents('day');
+            btnDay.classList.add('active');
+            btnNight.classList.remove('active');
+            scheduleDay.classList.remove('hidden');
+            scheduleNight.classList.add('hidden');
+        });
+
+        btnNight.addEventListener('click', () => {
+            renderContents('night');
+            btnNight.classList.add('active');
+            btnDay.classList.remove('active');
+            scheduleNight.classList.remove('hidden');
+            scheduleDay.classList.add('hidden');
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        renderContents('day');
+        renderSchedules();
+    </script>
+</body>
+</html>

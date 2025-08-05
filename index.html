@@ -92,7 +92,7 @@
     </header>
 
     <main>
-        <section class="py-4 md:py-6">
+        <section class="py-12 md:py-16">
             <div class="container mx-auto px-6 text-center">
                 <div class="flex flex-col items-center justify-center">
                     <img src="Family&FriendsDay_logo_透過.png" alt="DeNA Family & Friends Day Logo" class="w-48 md:w-64">
@@ -111,9 +111,9 @@
                             </h3>
                             <p class="text-lg">2025年8月21日（木）</p>
                             <ul class="list-disc list-inside mt-2 space-y-1">
-                                <li>昼の部 1部: 10:00 - 12:00</li>
-                                <li>昼の部 2部: 13:00 - 15:00</li>
-                                <li>夜の部: 17:00 - 20:45</li>
+                                <li>昼の部 1部: 10:00 - 12:00 ※11:00 入場終了</li>
+                                <li>昼の部 2部: 13:00 - 15:00 ※14:00 入場終了</li>
+                                <li>夜の部: 17:00 - 20:45 ※19:00 入場終了</li>
                             </ul>
                         </div>
                         <div>
@@ -188,7 +188,7 @@
                         </h3>
                         <ol class="list-decimal list-inside space-y-4 text-lg">
                             <li>スクランブルスクエア地下2階 or 2階にあるオフィス専用エレベーターにて、17階オフィスエントランスまでお越しください。</li>
-                            <li>参加者代表にお送りしたメールを17F特別受付にてお出しください。</li>
+                            <li>参加者代表名 もしくは 従業員名を受付でお知らせください。</li>
                         </ol>
                     </div>
                 </div>
@@ -243,16 +243,16 @@
     <script>
         const contents = {
             day: [
-                { name: 'DeNAスポーツクラブのマスコットとのじゃんけん大会', location: '40F（ステージ）', desc: 'DeNAのスポーツチームのマスコットのステージです。賞品付きのじゃんけん大会もあるので、ぜひ参加してね！', reserved: true },
+                { name: 'DeNAスポーツクラブのマスコットとのじゃんけん大会', location: '40F（ステージ）', desc: 'DeNAのスポーツチームのマスコットのステージです。賞品付きのじゃんけん大会もあるので、ぜひ参加してね！', reserved: false },
                 { name: 'ロウルのガラガラ抽選会', location: '40F', desc: 'DeNA川崎ブレイブサンダースのマスコット、ロウルグッズのガラガラ抽選会場です。', reserved: false },
                 { name: '芝生ひとやすみスペース', location: '40F', desc: 'ソファがある一角に、お子様が一休みできる芝生コーナーをご用意しました。', reserved: false },
-                { name: 'タレントベース プロフィール写真撮影会', location: '40F　所要時間15分程度', desc: 'DeNA Family & Friends Day限定！プロが最高の1枚を撮影。SNSにもどうぞ！', reserved: true },
+                { name: 'タレントベース プロフィール写真撮影会', location: '40F', desc: 'DeNA Family & Friends Day限定！プロが最高の1枚を撮影。SNSにもどうぞ！', reserved: true },
                 { name: 'ドリンクコーナー', location: '40F', desc: '冷蔵庫にご自由に飲んでいただけるドリンクをご用意。ジュースや牛乳、豆乳があります。ホットコーヒーやお水、お茶もぜひどうぞ！', reserved: false },
                 { name: 'パズルでプログラミング体験', location: '42F', desc: 'パズルを解きながら、楽しくプログラミングに触れてみよう!「プログラミングゼミ」アプリを使い楽しみながらプログラミングを学べます。', reserved: false },
                 { name: 'ケンコー縁日', location: '42F', desc: '握力計、型抜き、けん玉、輪投げに挑戦！ 2つ以上遊んだらお菓子つかみ取りもできちゃう！', reserved: false },
                 { name: 'バルーンアート', location: '42F', desc: 'DeNA マジック部からバルーンアート職人が登場！一緒に自分だけのバルーンを作ろう', reserved: false },
                 { name: 'ひとやすみラウンジ', location: '42F', desc: 'ちょっとしたお休みどころをご用意！コーヒーマシンもあるため、一休みしたい時に利用ください', reserved: false },
-                { name: 'ワークショップ：自分だけのふりかけ作り', location: '42F 所要時間15分程度', desc: '好きな具材を選んでシャカシャカ！　ふりかけ作り×家庭料理のテイクアウトサービス『マチルダ』の、家族でおいしく楽しい食体験を！<br><br>※対象年齢3歳以上。安全上の観点から、体験は保護者の方同伴でご参加ください。', reserved: true },
+                { name: 'ワークショップ：自分だけのふりかけ作り', location: '42F', desc: '好きな具材を選んでシャカシャカ！　ふりかけ作り×家庭料理のテイクアウトサービス『マチルダ』の、家族でおいしく楽しい食体験を！<br><br>※対象年齢3歳以上。安全上の観点から、体験は保護者の方同伴でご参加ください。', reserved: true },
             ],
             night: [
                 { name: '野球観戦', location: '40F', desc: '大画面でベイスターズの試合を応援！みんなで集まって盛り上がりましょう！', reserved: false },
@@ -267,18 +267,21 @@
         const schedules = {
             day1: [
                 { time: '9:50', event: '受付開始', location: '17F' },
+                { time: '11:00', event: '入場終了', location: '' },
                 { time: '11:20 - 11:50', event: 'マスコットステージ', location: '40F' },
                 { time: '12:00', event: '終了', location: '' },
             ],
             day2: [
                 { time: '12:50', event: '受付開始', location: '17F' },
                 { time: '13:20 - 13:50', event: 'マスコットステージ', location: '40F' },
+                { time: '14:00', event: '入場終了', location: '' },
                 { time: '15:00', event: '終了', location: '' },
             ],
             night: [
                 { time: '16:50', event: '受付開始', location: '17F' },
+                { time: '19:00', event: '入場終了', location: '' },
                 { time: '18:00-', event: '野球観戦', location: '40F' },
-                { time: '1800-', event: 'TOKYO MIX CURRYのカレー提供 (先着順)', location: '42F' },
+                { time: '18:00-', event: 'TOKYO MIX CURRYのカレー提供 (先着順)', location: '42F' },
                 { time: '20:30', event: '終了（試合の状況により変動）', location: '' },
             ]
         };

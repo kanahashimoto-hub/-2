@@ -111,9 +111,9 @@
                             </h3>
                             <p class="text-lg">2025年8月21日（木）</p>
                             <ul class="list-disc list-inside mt-2 space-y-1">
-                                <li>昼の部 1部: 10:00 - 12:00 ※11:00 入場終了</li>
-                                <li>昼の部 2部: 13:00 - 15:00 ※14:00 入場終了</li>
-                                <li>夜の部: 17:00 - 20:45 ※19:00 入場終了</li>
+                                <li>昼の部 1部: 10:00 - 12:00 ※11:00 受付締切</li>
+                                <li>昼の部 2部: 13:00 - 15:00 ※14:00 受付締切</li>
+                                <li>夜の部: 17:00 - 20:45 ※19:00 受付締切</li>
                             </ul>
                         </div>
                         <div>
@@ -266,20 +266,17 @@
 
         const schedules = {
             day1: [
-                { time: '9:50', event: '受付開始', location: '17F' },
-                { time: '11:00', event: '入場終了', location: '' },
+                { time: '9:50', event: '受付開始（11:00 受付締切)', location: '17F' },
                 { time: '11:20 - 11:50', event: 'マスコットステージ', location: '40F' },
                 { time: '12:00', event: '終了', location: '' },
             ],
             day2: [
-                { time: '12:50', event: '受付開始', location: '17F' },
+                { time: '12:50', event: '受付開始(14:00 受付締切)', location: '17F' },
                 { time: '13:20 - 13:50', event: 'マスコットステージ', location: '40F' },
-                { time: '14:00', event: '入場終了', location: '' },
                 { time: '15:00', event: '終了', location: '' },
             ],
             night: [
-                { time: '16:50', event: '受付開始', location: '17F' },
-                { time: '19:00', event: '入場終了', location: '' },
+                { time: '16:50', event: '受付開始(19:00 受付締切)', location: '17F' },
                 { time: '18:00-', event: '野球観戦', location: '40F' },
                 { time: '18:00-', event: 'TOKYO MIX CURRYのカレー提供 (先着順)', location: '42F' },
                 { time: '20:30', event: '終了（試合の状況により変動）', location: '' },

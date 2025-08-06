@@ -85,14 +85,13 @@
                     <a href="#contents" class="nav-link font-semibold">コンテンツ</a>
                     <a href="#schedule" class="nav-link font-semibold">スケジュール</a>
                     <a href="#access" class="nav-link font-semibold">アクセス</a>
-                    <a href="#floormap" class="nav-link font-semibold">フロアマップ</a>
                 </div>
             </div>
         </nav>
     </header>
 
     <main>
-        <section class="py-12 md:py-16">
+        <section class="py-4 md:py-6">
             <div class="container mx-auto px-6 text-center">
                 <div class="flex flex-col items-center justify-center">
                     <img src="Family&FriendsDay_logo_透過.png" alt="DeNA Family & Friends Day Logo" class="w-48 md:w-64">
@@ -194,43 +193,6 @@
                 </div>
             </div>
         </section>
-
-        <section id="floormap" class="py-16 md:py-24">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12">フロアマップ</h2>
-                <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                    <div class="bg-white p-6 rounded-xl shadow-lg">
-                        <h3 class="text-2xl font-bold mb-6 text-center">40F</h3>
-                        <div class="space-y-4">
-                            <div class="bg-blue-100 p-4 rounded-lg text-center font-semibold">ラウンジ & ステージ</div>
-                            <div class="grid grid-cols-2 gap-4">
-                               <div class="bg-green-100 p-4 rounded-lg text-center font-semibold">じゃんけん大会</div>
-                               <div class="bg-green-100 p-4 rounded-lg text-center font-semibold">抽選会</div>
-                               <div class="bg-green-100 p-4 rounded-lg text-center font-semibold">プログラミング体験</div>
-                               <div class="bg-green-100 p-4 rounded-lg text-center font-semibold">野球観戦</div>
-                            </div>
-                            <div class="bg-yellow-100 p-4 rounded-lg text-center font-semibold">セミナールーム</div>
-                            <div class="grid grid-cols-1 gap-4">
-                                <div class="bg-red-100 p-4 rounded-lg text-center font-semibold">プロフィール写真撮影会</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-lg">
-                        <h3 class="text-2xl font-bold mb-6 text-center">42F</h3>
-                         <div class="space-y-4">
-                            <div class="bg-blue-100 p-4 rounded-lg text-center font-semibold">ラウンジ</div>
-                            <div class="grid grid-cols-2 gap-4">
-                               <div class="bg-purple-100 p-4 rounded-lg text-center font-semibold">ケンコー縁日</div>
-                               <div class="bg-purple-100 p-4 rounded-lg text-center font-semibold">バルーンアート</div>
-                               <div class="bg-purple-100 p-4 rounded-lg text-center font-semibold">ふりかけ作り</div>
-                               <div class="bg-purple-100 p-4 rounded-lg text-center font-semibold">ボードゲーム</div>
-                               <div class="bg-orange-200 p-4 rounded-lg text-center font-semibold col-span-2">TOKYO MIX CURRY</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer class="bg-gray-800 text-white py-8">
@@ -259,7 +221,7 @@
                 { name: 'TOKYO MIX CURRY', location: '42F(ラウンジ) 18:00 - 先着順 ', desc: 'DeNAギャラクシーからTOKYO MIX CURRYが参加!美味しいカレーを先着順でご提供します。', reserved: false, note: '先着順' },
                 { name: 'タレントベース プロフィール写真撮影会', location: '40F(セミナールーム) 17:00 - 19:30', desc: 'ご友人との記念写真や、本格的な宣材写真も撮影。SNSにもどうぞ！', reserved: true  },
                 { name: 'ケンコー縁日', location: '42F(ラウンジ) 17:00 - 19:00', desc: '握力計、型抜き、けん玉、輪投げに挑戦！', reserved: false },
-                { name: '軽食やドリンク', location: '40F & 42F(ラウンジ)', desc: '球団ビールやDeNAギャラクシーな企業からスナックや軽食をご用意!', reserved: false },
+                { name: '軽食やドリンク', location: '40F & 42F(ラウンジ)', desc: '球団ビールやDeNAギャラクシーからBASE FOOD,snaq.me のスナックや軽食をご用意!', reserved: false },
                 { name: 'ボードゲーム', location: '42F(ラウンジ) 17:00 - 19:00', desc: 'ルールは知らなくても大丈夫！スタッフが丁寧に教えます。短時間でサクッと楽しめるゲームから、じっくり考える頭脳戦まで、色々揃えてお待ちしています。手ぶらで気軽に遊びに来てくださいね♪', reserved: false },
             ]
         };
@@ -279,6 +241,7 @@
                 { time: '16:50', event: '受付開始(19:00 受付締切)', location: '17F' },
                 { time: '18:00-', event: '野球観戦', location: '40F' },
                 { time: '18:00-', event: 'TOKYO MIX CURRYのカレー提供 (先着順)', location: '42F' },
+                { time: '19:00', event: '42F ラウンジ終了。19:00以降は40Fラウンジのみ', location: '42F' },
                 { time: '20:30', event: '終了（試合の状況により変動）', location: '' },
             ]
         };
